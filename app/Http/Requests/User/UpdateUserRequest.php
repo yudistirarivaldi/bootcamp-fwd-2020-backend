@@ -3,9 +3,7 @@
 namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
-
 use App\Models\User;
-
 use Symfony\Component\HttpFoundation\Response;
 
 // This only on update request

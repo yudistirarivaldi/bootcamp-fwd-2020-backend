@@ -3,9 +3,7 @@
 namespace App\Http\Requests\Doctor;
 
 use Illuminate\Foundation\Http\FormRequest;
-
 use App\Models\Operational\Doctor;
-
 use Symfony\Component\HttpFoundation\Response;
 
 class StoreDoctorRequest extends FormRequest
