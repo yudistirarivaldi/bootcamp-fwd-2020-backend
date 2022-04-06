@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
 
     @include('include.frontsite.meta')
 
@@ -8,30 +9,30 @@
 
     @stack('before-style')
 
-        @include('include.frontsite.style')
+    @include('include.frontsite.style')
 
     @stack('after-style')
 
 
 
-  </head>
+</head>
 
-  <body>
+<body>
 
     @include('components.frontsite.header')
 
-        @yield('content')
+    @yield('content')
 
     @include('components.frontsite.footer')
 
     @stack('before-script')
 
-        @include('include.frontsite.script')
+    @include('include.frontsite.script')
 
     @stack('after-script')
 
     {{-- Modals if you have modals you can put this place --}}
 
-  </body>
-</html>
+</body>
 
+</html>
