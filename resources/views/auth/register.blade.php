@@ -26,36 +26,37 @@
 
                              @csrf
 
-                             <label class="block">
+                             <label class="block" for="name">
                                  <input type="text" name="name"
                                      class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
                                      placeholder="Complete Name" />
                              </label>
 
-                             <label class="block">
-                                 <input type="text" name="age"
-                                     class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
-                                     placeholder="Age" />
-                             </label>
-
-                             <label class="block">
+                             <label class="block" for="email">
                                  <input type="email" name="email"
                                      class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
                                      placeholder="Email Address" />
                              </label>
 
-                             <label class="block">
+                             <label class="block" for="password">
                                  <input type="password" name="password"
                                      class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
                                      placeholder="Password" />
                              </label>
 
+                             <label class="block" for="age">
+                                 <input type="password" name="password_confirmation"
+                                     class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
+                                     placeholder="Password Confirmation" />
+                             </label>
+
                              <div class="mt-10 grid gap-6">
-                                 <a href="sign-up-success.html"
+                                 <button
                                      class="text-center text-white text-lg font-medium bg-[#0D63F3] px-10 py-4 rounded-full">
                                      Continue
-                                 </a>
-                                 <a href="sign-in.html"
+                                 </button>
+
+                                 <a href="{{ route('login') }}"
                                      class="text-center text-lg text-[#1E2B4F] font-medium bg-[#F2F6FE] px-10 py-4 rounded-full">
                                      Sign In
                                  </a>

@@ -65,7 +65,7 @@
                                 <!-- focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 -->
                                 <span class="sr-only">Open user menu</span>
                                 <div class="text-right mr-5">
-                                    <div class="text-base font-medium text-[#1E2B4F]">Hi, Shayna</div>
+                                    <div class="text-base font-medium text-[#1E2B4F]">Hi, {{ auth()->user()->name }}</div>
                                     <div class="text-sm text-[#AFAEC3]">
                                         Pasien
                                     </div>
@@ -105,6 +105,7 @@
                     </div>
                 </div>
             @endauth
+
 
             <!-- Mobile Toggle button -->
             <div class="-mr-2 flex items-center lg:hidden">
