@@ -30,24 +30,44 @@
                                  <input type="text" name="name"
                                      class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
                                      placeholder="Complete Name" />
+
+                                 @if ($errors->has('name'))
+                                     <p class="text-red-500 mb-3 text-sm">{{ $errors->first('name') }}</p>
+                                 @endif
+
                              </label>
 
                              <label class="block" for="email">
                                  <input type="email" name="email"
                                      class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
                                      placeholder="Email Address" />
+
+                                 @if ($errors->has('name'))
+                                     <p class="text-red-500 mb-3 text-sm">{{ $errors->first('name') }}</p>
+                                 @endif
+
                              </label>
 
                              <label class="block" for="password">
                                  <input type="password" name="password"
                                      class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
                                      placeholder="Password" />
+
+                                 @if ($errors->has('name'))
+                                     <p class="text-red-500 mb-3 text-sm">{{ $errors->first('name') }}</p>
+                                 @endif
+
                              </label>
 
                              <label class="block" for="age">
                                  <input type="password" name="password_confirmation"
                                      class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
                                      placeholder="Password Confirmation" />
+
+                                 @if ($errors->has('name'))
+                                     <p class="text-red-500 mb-3 text-sm">{{ $errors->first('name') }}</p>
+                                 @endif
+
                              </label>
 
                              <div class="mt-10 grid gap-6">
