@@ -109,7 +109,6 @@
                             </button>
                         </div>
 
-
                         <div x-show="profileDekstopOpen" @click.outside="profileDekstopOpen = false"
                             x-transition:enter="transition ease-out duration-200"
                             x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
@@ -135,8 +134,6 @@
                                     @csrf
                                 </form>
                             </a>
-
-
 
                         </div>
                     </div>
