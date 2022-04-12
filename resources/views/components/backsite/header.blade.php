@@ -32,11 +32,13 @@
                     <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#"
                             data-toggle="dropdown"><i class="ficon ft-bell"></i><span
                                 class="badge badge-pill badge-danger badge-up badge-glow">5</span></a>
+
                         <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                             <li class="dropdown-menu-header">
                                 <h6 class="dropdown-header m-0"><span class="grey darken-2">Notifications</span></h6>
                                 <span class="notification-tag badge badge-danger float-right m-0">5 New</span>
                             </li>
+
                             <li class="scrollable-container media-list w-100"><a href="javascript:void(0)">
                                     <div class="media">
                                         <div class="media-left align-self-center"><i
@@ -49,7 +51,9 @@
                                                     datetime="2015-06-11T18:29:20+08:00">30 minutes ago</time></small>
                                         </div>
                                     </div>
-                                </a><a href="javascript:void(0)">
+                                </a>
+
+                                <a href="javascript:void(0)">
                                     <div class="media">
                                         <div class="media-left align-self-center"><i
                                                 class="ft-download-cloud icon-bg-circle bg-red bg-darken-1 mr-0"></i>
@@ -62,7 +66,9 @@
                                                     datetime="2015-06-11T18:29:20+08:00">Five hour ago</time></small>
                                         </div>
                                     </div>
-                                </a><a href="javascript:void(0)">
+                                </a>
+
+                                <a href="javascript:void(0)">
                                     <div class="media">
                                         <div class="media-left align-self-center"><i
                                                 class="ft-alert-triangle icon-bg-circle bg-yellow bg-darken-3 mr-0"></i>
@@ -109,8 +115,9 @@
                     </li>
 
                     <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link"
-                            href="#" data-toggle="dropdown"><span class="mr-1 user-name text-bold-700">John
-                                Doe</span><span class="avatar avatar-online"><img
+                            href="#" data-toggle="dropdown"><span
+                                class="mr-1 user-name text-bold-700">{{ Auth::user()->name }}</span><span
+                                class="avatar avatar-online"><img
                                     src="{{ asset('/assets/backsite/app-assets/images/portrait/small/avatar-s-19.png') }}"
                                     alt="avatar"><i></i></span></a>
 
