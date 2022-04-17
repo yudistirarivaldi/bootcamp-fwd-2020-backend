@@ -23,7 +23,7 @@ use App\Models\MasterData\Specialist;
 
 class LandingController extends Controller
 {
-
+    // ALWAYS ADDED FOR AUTHENTICATION
     /**
      * Display a listing of the resource.
      *

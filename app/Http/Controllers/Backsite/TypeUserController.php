@@ -19,7 +19,7 @@ use App\Models\MasterData\TypeUser;
 
 class TypeUserController extends Controller
 {
-
+    // ALWAYS ADDED FOR AUTHENTICATION
     /**
      * Create a new controller instance.
      *

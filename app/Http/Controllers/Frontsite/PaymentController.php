@@ -24,6 +24,7 @@ use App\Models\Operational\Transaction;
 
 class PaymentController extends Controller
 {
+    // ALWAYS ADDED FOR AUTHENTICATION
     /**
      * Create a new controller instance.
      *

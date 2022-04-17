@@ -20,7 +20,7 @@ use App\Models\MasterData\Consultation;
 
 class AppointmentController extends Controller
 {
-
+    // ALWAYS ADDED FOR AUTHENTICATION
     /**
      * Create a new controller instance.
      *

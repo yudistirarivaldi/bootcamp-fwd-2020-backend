@@ -9,16 +9,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 // use everything here
-// use gate
+// use Gate;
 use Auth;
 
-// use model
-use App\Models\MasterData\TypeUser;
+// use request
+use App\Http\Requests\Doctor\StoreDoctorRequest;
+use App\Http\Requests\Doctor\UpdateDoctorRequest;
 
+// Models
+use App\Models\MasterData\Specialist;
+use App\Models\Operational\Doctor;
+use League\CommonMark\Util\SpecReader;
 
-
-
-class DashboardController extends Controller
+class DoctorController extends Controller
 {
     // ALWAYS ADDED FOR AUTHENTICATION
     /**
@@ -30,7 +33,6 @@ class DashboardController extends Controller
     {
         $this->middleware('auth');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +40,14 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('pages.backsite.dashboard.index');
+        // for table grid
+        $doctor = Doctor::orderBy('created_at', 'desc')->get();
+
+        // for select 2 = ascending A - Z
+        $specialist = Specialist::orderBy('name', 'asc')->get();
+
+        return view('pages.backsite.operasional.doctor.index', compact('doctor','specialist'));
+
     }
 
     /**
@@ -48,7 +57,7 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -57,9 +66,17 @@ class DashboardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDoctorRequest $request)
     {
-        //
+        // get all request from frontsite
+        $data = $request->all();
+
+        // store to database
+        $doctor = Doctor::create($data);
+
+        alert()->success('Success Message', 'Successfully added new doctor!');
+        return redirect()->route('backsite.doctor.index');
+
     }
 
     /**
@@ -68,10 +85,11 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Doctor $doctor)
     {
-        //
+        return view('pages.backsite.operasional.doctor.show', compact('doctor'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -79,10 +97,14 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Doctor $doctor)
     {
-        //
+        // for select 2 = ascending A - Z
+        $specialist = Specialist::orderBy('name', 'asc')->get();
+
+        return view('pages.backsite.operasional.doctor.edit', compact('doctor', 'specialist'));
     }
+
 
     /**
      * Update the specified resource in storage.

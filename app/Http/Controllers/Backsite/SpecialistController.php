@@ -21,6 +21,7 @@ use App\Models\MasterData\Specialist;
 
 class SpecialistController extends Controller
 {
+    // ALWAYS ADDED FOR AUTHENTICATION
     /**
      * Create a new controller instance.
      *
