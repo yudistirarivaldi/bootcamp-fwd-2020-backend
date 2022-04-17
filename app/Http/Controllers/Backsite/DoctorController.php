@@ -113,10 +113,19 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateDoctorRequest $request, Doctor $doctor)
     {
-        //
+        // get all request from frontsite
+        $data = $request->all();
+
+        // Update to database
+        $doctor->update($data);
+
+        alert()->success('Success Message', 'Successfully updated doctor!');
+        return redirect()->route('backsite.doctor.index');
+
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -124,8 +133,11 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Doctor $doctor)
     {
-        //
+        $doctor->delete();
+
+        alert()->success('Success Message', 'Successfully deleted doctor!');
+        return redirect()->route('backsite.doctor.index');
     }
 }
