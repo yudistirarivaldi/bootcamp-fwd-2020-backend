@@ -69,6 +69,8 @@ class SpecialistController extends Controller
 
         $specialist = Specialist::create($data);
 
+        alert()->success('Success Message', 'Successfully added new specialist!');
+        return redirect()->route('backsite.specialist.index');
 
     }
 
@@ -78,10 +80,11 @@ class SpecialistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Specialist $specialist)
     {
-        //
+        return view('pages.backsite.master-data.specialist.show', compact('specialist'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -89,10 +92,13 @@ class SpecialistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Specialist $specialist)
     {
-        //
+        dd($specialist);
+
+        return view('pages.backsite.master-data.specialist.edit', compact('specialist'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -101,10 +107,18 @@ class SpecialistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSpecialistRequest $request, Specialist $specialist)
     {
-        //
+        // get all request from frontsite
+        $data = $request->all();
+
+        // Update to database
+        $specialist->update($data);
+
+        alert()->success('Success Message', 'Successfully updated specialist!');
+        return redirect()->route('backsite.specialist.index');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -112,8 +126,13 @@ class SpecialistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Specialist $specialist)
     {
-        //
+        // $specialist->forceDelete(); for deleted file forever
+        $specialist->delete();
+
+        alert()->success('Success Message', 'Successfully deleted specialist!');
+        return redirect()->route('backsite.specialist.index');
     }
+
 }
