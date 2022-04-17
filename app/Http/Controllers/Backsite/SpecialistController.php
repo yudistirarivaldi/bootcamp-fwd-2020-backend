@@ -9,18 +9,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 // use everything here
-// use gate
+
+// use Gate;
 use Auth;
 
-// use model
-use App\Models\MasterData\TypeUser;
+// use request
+use App\Http\Requests\Specialist\StoreSpecialistRequest;
+use App\Http\Requests\Specialist\UpdateSpecialistRequest;
 
+// Models
+use App\Models\MasterData\Specialist;
 
-
-
-class DashboardController extends Controller
+class SpecialistController extends Controller
 {
-
     /**
      * Create a new controller instance.
      *
@@ -30,7 +31,6 @@ class DashboardController extends Controller
     {
         $this->middleware('auth');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +38,12 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('pages.backsite.dashboard.index');
+        $specialist = Specialist::orderBy('created_at', 'desc')->get();
+
+        dd($specialist);
+
+        return view('pages.backsite.master-data.specialist.index', compact('specialist'));
+
     }
 
     /**
@@ -48,7 +53,7 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -57,9 +62,14 @@ class DashboardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSpecialistRequest $request)
     {
-        //
+        // get all request from frontsite
+        $data = $request->all();
+
+        $specialist = Specialist::create($data);
+
+
     }
 
     /**

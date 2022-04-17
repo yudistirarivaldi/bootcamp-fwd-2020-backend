@@ -9,16 +9,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 // use everything here
-// use gate
 use Auth;
+// use Gate;
 
-// use model
+// Models
 use App\Models\MasterData\TypeUser;
 
 
-
-
-class DashboardController extends Controller
+class TypeUserController extends Controller
 {
 
     /**
@@ -30,7 +28,6 @@ class DashboardController extends Controller
     {
         $this->middleware('auth');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +35,11 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('pages.backsite.dashboard.index');
+        $type_user = TypeUser::all();
+
+        dd($type_user);
+
+        return view('pages.backsite.management-access.type-user.index', compact('type_user'));
     }
 
     /**
@@ -48,7 +49,7 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -59,7 +60,7 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -70,7 +71,7 @@ class DashboardController extends Controller
      */
     public function show($id)
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -81,7 +82,7 @@ class DashboardController extends Controller
      */
     public function edit($id)
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -93,7 +94,7 @@ class DashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -104,6 +105,6 @@ class DashboardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return abort(404);
     }
 }

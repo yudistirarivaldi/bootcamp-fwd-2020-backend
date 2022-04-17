@@ -16,7 +16,9 @@
         rel="stylesheet">
 
     @stack('before-style')
-    @include('include.backsite.style')
+
+         @include('include.backsite.style')
+
     @stack('after-style')
 
 </head>
@@ -24,13 +26,20 @@
 <body class="vertical-layout vertical-menu 2-columns fixed-navbar" data-open="click" data-menu="vertical-menu"
     data-col="2-columns">
 
+    @include('sweetalert::alert')
+
     @include('components.backsite.header')
+
     @include('components.backsite.menu')
+
     @yield('content')
+
     @include('components.backsite.footer')
 
     @stack('before-script')
-    @include('include.backsite.script')
+
+        @include('include.backsite.script')
+
     @stack('after-script')
 
 </body>
