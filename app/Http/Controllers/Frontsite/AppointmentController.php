@@ -9,8 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 // use everything here
-use Auth;
 // use Gate;
+use Auth;
+
 
 // Models
 use App\Models\User;
