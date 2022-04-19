@@ -8,12 +8,17 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontsite\AppointmentController;
 use App\Http\Controllers\Frontsite\LandingController;
 use App\Http\Controllers\Frontsite\PaymentController;
-use App\Http\Controllers\Frontsite\RegisterSuccessController;
 
 // Backsite
 use App\Http\Controllers\Backsite\DashboardController;
 use App\Http\Controllers\Backsite\TypeUserController;
 use App\Http\Controllers\Backsite\SpecialistController;
+use App\Http\Controllers\Backsite\ConsultationController;
+use App\Http\Controllers\Backsite\ConfigPaymentController;
+use App\Http\Controllers\Backsite\PermissionController;
+use App\Http\Controllers\Backsite\RoleController;
+use App\Http\Controllers\Backsite\ReportAppointmentController;
+use App\Http\Controllers\Backsite\ReportTransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +57,24 @@ Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['aut
 
     // specialist
      Route::resource('specialist', SpecialistController::class);
+
+    // Config Payment
+     Route::resource('config-payment', ConfigPaymentController::class);
+
+    // Consultation
+     Route::resource('consultation', ConsultationController::class);
+
+    // permission
+     Route::resource('permission', PermissionController::class);
+
+    // Role
+     Route::resource('role', RoleController::class);
+
+    // Appointment
+     Route::resource('appointment', ReportAppointmentController::class);
+
+    // Appointment
+     Route::resource('transaction', ReportTransactionController::class);
 
 });
 
