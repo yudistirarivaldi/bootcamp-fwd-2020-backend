@@ -61,6 +61,11 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function role()
+    {
+        return $this->belongsToMany('App\Models\ManagementAccess\Role');
+    }
+
      public function detail_user()
     {
         return $this->hasOne('App\Models\ManagementAccess\DetailUser', 'user_id');

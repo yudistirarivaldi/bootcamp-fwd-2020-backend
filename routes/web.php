@@ -15,10 +15,13 @@ use App\Http\Controllers\Backsite\TypeUserController;
 use App\Http\Controllers\Backsite\SpecialistController;
 use App\Http\Controllers\Backsite\ConsultationController;
 use App\Http\Controllers\Backsite\ConfigPaymentController;
+use App\Http\Controllers\Backsite\DoctorController;
 use App\Http\Controllers\Backsite\PermissionController;
 use App\Http\Controllers\Backsite\RoleController;
 use App\Http\Controllers\Backsite\ReportAppointmentController;
 use App\Http\Controllers\Backsite\ReportTransactionController;
+use App\Http\Controllers\Backsite\UserController;
+use App\Http\Controllers\Backsite\HospitalPaitentContoller;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +78,15 @@ Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['aut
 
     // Appointment
      Route::resource('transaction', ReportTransactionController::class);
+
+    // Doctor
+     Route::resource('doctor', DoctorController::class);
+
+    // User
+     Route::resource('user', UserController::class);
+
+     // Hospital Patient
+     Route::resource('hospital-patient', HospitalPaitentContoller::class);
 
 });
 

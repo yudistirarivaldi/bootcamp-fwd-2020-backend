@@ -5,7 +5,7 @@ namespace App\Http\Requests\Role;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\ManagementAccess\Role;
 use Symfony\Component\HttpFoundation\Response;
-
+use Gate;
 use Illuminate\Validation\Rule;
 
 class UpdateRoleRequest extends FormRequest
@@ -17,6 +17,9 @@ class UpdateRoleRequest extends FormRequest
      */
     public function authorize()
     {
+         // do not bring access if
+        abort_if(Gate::denies('role_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         return true;
     }
 

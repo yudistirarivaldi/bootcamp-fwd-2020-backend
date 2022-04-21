@@ -5,7 +5,7 @@ namespace App\Http\Requests\Specialist;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 use App\Models\MasterData\Specialist;
-
+use Gate;
 use Illuminate\Validation\Rule;
 
 class UpdateSpecialistRequest extends FormRequest
@@ -17,6 +17,9 @@ class UpdateSpecialistRequest extends FormRequest
      */
     public function authorize()
     {
+         // do not bring access if
+        abort_if(Gate::denies('specialist_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         return true;
     }
 

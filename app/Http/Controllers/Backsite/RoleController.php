@@ -63,6 +63,7 @@ class RoleController extends Controller
      */
     public function store(StoreRoleRequest $request)
     {
+
         // get all request from frontsite
         $data = $request->all();
 
@@ -82,6 +83,9 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
+        // do not bring access if
+        abort_if(Gate::denies('role_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         // load permission in role
         $role->load('permission');
 
@@ -96,6 +100,9 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
+        // do not bring access if
+        abort_if(Gate::denies('role_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         $permission = Permission::all();
 
         // load permission on role
@@ -113,6 +120,9 @@ class RoleController extends Controller
      */
     public function update(UpdateRoleRequest $request, Role $role)
     {
+        // do not bring access if
+        abort_if(Gate::denies('role_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         $role->update($request->all());
 
         // [] for feature select2 multiple and input new data
@@ -130,6 +140,9 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
+        // do not bring access if
+        abort_if(Gate::denies('role_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         $role->forceDelete();
 
         alert()->success('Success Message', 'Successfully deleted role');

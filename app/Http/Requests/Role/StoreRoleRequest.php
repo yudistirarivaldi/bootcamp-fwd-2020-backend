@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use App\Models\ManagementAccess\Role;
 use Illuminate\Validation\Rules\Unique;
 use Symfony\Component\HttpFoundation\Response;
+use Gate;
 
 class StoreRoleRequest extends FormRequest
 {
@@ -16,6 +17,9 @@ class StoreRoleRequest extends FormRequest
      */
     public function authorize()
     {
+        // do not bring access if
+        abort_if(Gate::denies('role_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         return true;
     }
 

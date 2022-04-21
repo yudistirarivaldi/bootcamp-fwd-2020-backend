@@ -3,35 +3,10 @@
 namespace App\Http\Controllers\Backsite;
 
 use App\Http\Controllers\Controller;
-
-// use library here
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
-// use everything here
-use Illuminate\Database\Eloquent\Builder;
-// use gate
-use Auth;
-
-// use request
-
-// use model
-use App\Models\User;
-
-class HospitalPaitentContoller extends Controller
+class UserController extends Controller
 {
-
-    // ALWAYS ADDED FOR AUTHENTICATION
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -39,14 +14,7 @@ class HospitalPaitentContoller extends Controller
      */
     public function index()
     {
-        // user find data in detail_user
-        $hospital_patient = User::whereHas('detail_user', function (Builder $query) {
-            $query->where('type_user_id', 3); //only load user have type user 3 = patient
-
-        })->orderBy('created_at', 'desc')->get();
-
-        return view('pages.backsite.operasional.hospital-patient.index', compact('hospital_patient'));
-
+        //
     }
 
     /**
