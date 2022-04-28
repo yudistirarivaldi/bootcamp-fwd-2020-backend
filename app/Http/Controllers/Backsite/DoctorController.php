@@ -8,10 +8,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Str;
 
 // use everything here
 use Gate;
 use Auth;
+use File;
 
 // use request
 use App\Http\Requests\Doctor\StoreDoctorRequest;
@@ -39,6 +41,7 @@ class DoctorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
          // do not bring access if
@@ -75,6 +78,16 @@ class DoctorController extends Controller
 
         // get all request from frontsite
         $data = $request->all();
+
+        // re format before push to table
+        $data['fee'] = str_replace(',', '', $data['fee']);
+        $data['fee'] = str_replace('IDR ', '', $data['fee']);
+
+        // upload process here
+        $path = public_path('app/public/assets/file-doctor');
+        if(!File::isDirectory($path)) {
+            $response = Storage::makeDirectory('public/assets/file-doctor');
+        }
 
         // store to database
         $doctor = Doctor::create($data);

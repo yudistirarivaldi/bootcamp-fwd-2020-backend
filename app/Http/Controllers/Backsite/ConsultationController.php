@@ -7,9 +7,10 @@ use App\Http\Controllers\Controller;
 // use library here
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Response;
 
 // use everything here
-use gate;
+use Gate;
 use Auth;
 
 // use request

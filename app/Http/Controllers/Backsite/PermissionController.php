@@ -7,9 +7,10 @@ use App\Http\Controllers\Controller;
 // use library here
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Response;
 
 // use everything here
-// use gate
+use Gate;
 use Auth;
 
 // use request
@@ -37,6 +38,9 @@ class PermissionController extends Controller
      */
     public function index()
     {
+        // do not bring access if
+        abort_if(Gate::denies('permission_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         $permission = Permission::orderBy('id', 'asc')->get();
 
         return view('pages.backsite.management-access.permission.index', compact('permission'));

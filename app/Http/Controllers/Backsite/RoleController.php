@@ -7,9 +7,10 @@ use App\Http\Controllers\Controller;
 // use library here
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Response;
 
 // use everything here
-// use gate
+use Gate;
 use Auth;
 
 // use request
@@ -40,6 +41,9 @@ class RoleController extends Controller
      */
     public function index()
     {
+
+        abort_if(Gate::denies('role_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         $role = Role::orderBy('created_at', 'desc')->get();
 
         return view('pages.backsite.management-access.role.index', compact('role'));
