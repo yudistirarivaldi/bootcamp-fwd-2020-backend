@@ -32,18 +32,18 @@ class StoreDoctorRequest extends FormRequest
     {
         return [
             'specialist_id' => [
-                'required', 'integer', 'max:255'
+                'required', 'integer', 'max:255',
             ],
             'name' => [
-                'required', 'string', 'max:255'
+                'required', 'string', 'max:255',
 
             ],
             'fee' => [
-                'required', 'string', 'max:255'
+                'required', 'string', 'max:255',
 
             ],
              'photo' => [
-                'nullable', 'string', 'max:10000'
+                'nullable', 'mimes:jpeg,svg,png,jfif', 'max:10000',
 
             ],
         ];

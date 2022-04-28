@@ -84,9 +84,20 @@ class DoctorController extends Controller
         $data['fee'] = str_replace('IDR ', '', $data['fee']);
 
         // upload process here
+        // cek if file exist
         $path = public_path('app/public/assets/file-doctor');
         if(!File::isDirectory($path)) {
+        // if exist then create folder
             $response = Storage::makeDirectory('public/assets/file-doctor');
+        }
+
+        // if file exists its time to store photo
+        if(isset($data['photo'])){
+            $data['photo'] = $request->file('photo')->store(
+                'assets/file-doctor', 'public'
+            );
+        }else{
+            $data['photo'] = "";
         }
 
         // store to database
@@ -139,19 +150,41 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateDoctorRequest $request, Doctor $doctor)
-    {
-        // do not bring access if
-        abort_if(Gate::denies('doctor_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
+     {
         // get all request from frontsite
         $data = $request->all();
 
-        // Update to database
+        // re format before push to table
+        $data['fee'] = str_replace(',', '', $data['fee']);
+        $data['fee'] = str_replace('IDR ', '', $data['fee']);
+
+        // upload process here
+        // change format photo
+        if(isset($data['photo'])){
+
+             // first checking old photo to delete from storage
+            $get_item = $doctor['photo'];
+
+            // change file locations
+            $data['photo'] = $request->file('photo')->store(
+                'assets/file-doctor', 'public'
+            );
+
+            // delete old photo from storage
+            $data_old = 'storage/'.$get_item;
+            if (File::exists($data_old)) {
+                File::delete($data_old);
+            }else{
+                File::delete('storage/app/public/'.$get_item);
+            }
+
+        }
+
+        // update to database
         $doctor->update($data);
 
-        alert()->success('Success Message', 'Successfully updated doctor!');
+        alert()->success('Success Message', 'Successfully updated doctor');
         return redirect()->route('backsite.doctor.index');
-
     }
 
 

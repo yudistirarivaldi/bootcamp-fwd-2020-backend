@@ -5,6 +5,7 @@ namespace App\Http\Requests\Doctor;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Operational\Doctor;
 use Symfony\Component\HttpFoundation\Response;
+use Gate;
 
 class UpdateDoctorRequest extends FormRequest
 {
@@ -41,7 +42,7 @@ class UpdateDoctorRequest extends FormRequest
 
             ],
              'photo' => [
-                'nullable', 'string', 'max:10000'
+                'nullable', 'mimes:jpeg,svg,png,jfif', 'max:10000'
 
             ],
         ];
