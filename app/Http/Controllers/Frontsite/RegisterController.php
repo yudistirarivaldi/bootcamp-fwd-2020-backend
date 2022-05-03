@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontsite;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 // use library here
 use Illuminate\Support\Facades\Storage;
@@ -16,9 +16,11 @@ use Auth;
 // use model here
 use App\Models\User;
 
+// thirdparty package
+
 class RegisterController extends Controller
 {
-     /**
+    /**
      * Create a new controller instance.
      *
      * @return void
