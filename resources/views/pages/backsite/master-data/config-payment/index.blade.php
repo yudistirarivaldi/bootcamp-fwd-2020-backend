@@ -95,7 +95,7 @@
 
                                                                             @can('config_payment_edit')
                                                                                 <a class="dropdown-item"
-                                                                                    href="{{ route('backsite.config-payment.edit', $config_payment_item->id) }}">
+                                                                                    href="{{ route('backsite.config_payment.edit', $config_payment_item->id) }}">
                                                                                     Edit
                                                                                 </a>
                                                                             @endcan

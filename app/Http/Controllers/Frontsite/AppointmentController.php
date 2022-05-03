@@ -106,4 +106,15 @@ class AppointmentController extends Controller
     {
         //
     }
+
+     // custom
+
+    public function appointment($id)
+    {
+        $doctor = Doctor::where('id', $id)->first();
+        $consultation = Consultation::orderBy('name', 'asc')->get();
+
+        return view('pages.frontsite.appointment.index', compact('doctor', 'consultation'));
+    }
+
 }

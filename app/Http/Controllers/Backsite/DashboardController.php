@@ -7,9 +7,10 @@ use App\Http\Controllers\Controller;
 // use library here
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Response;
 
 // use everything here
-// use gate
+use Gate;
 use Auth;
 
 // use model
@@ -38,6 +39,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        abort_if(Gate::denies('dashboard_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         return view('pages.backsite.dashboard.index');
     }
 

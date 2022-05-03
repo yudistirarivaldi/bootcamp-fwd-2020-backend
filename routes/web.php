@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontsite\AppointmentController;
 use App\Http\Controllers\Frontsite\LandingController;
 use App\Http\Controllers\Frontsite\PaymentController;
+use App\Http\Controllers\Frontsite\RegisterController;
 
 // Backsite
 use App\Http\Controllers\Backsite\DashboardController;
@@ -48,6 +49,19 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function (){
     // Appointment page
     Route::resource('appointment', AppointmentController::class);
 
+    // appointment page
+    Route::get('appointment/doctor/{id}', [AppointmentController::class, 'appointment'])->name('appointment.doctor');
+    Route::resource('appointment', AppointmentController::class);
+
+    // payment page
+    Route::get('payment/success', [PaymentController::class, 'success'])->name('payment.success');
+    Route::get('payment/appointment/{id}', [PaymentController::class, 'payment'])->name('payment.appointment');
+    Route::resource('payment', PaymentController::class);
+
+    // register success page
+    Route::resource('register_success', RegisterController::class);
+
+
 });
 
 Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['auth:sanctum', 'verified']], function() {
@@ -62,7 +76,7 @@ Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['aut
      Route::resource('specialist', SpecialistController::class);
 
     // Config Payment
-     Route::resource('config-payment', ConfigPaymentController::class);
+     Route::resource('config_payment', ConfigPaymentController::class);
 
     // Consultation
      Route::resource('consultation', ConsultationController::class);

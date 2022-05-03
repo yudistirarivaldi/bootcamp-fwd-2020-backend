@@ -58,7 +58,7 @@
 
             {{-- @can('master_data_access') --}}
             <li class=" nav-item"><a href="#"><i
-                        class="{{ request()->is('backsite/specialist') ||request()->is('backsite/specialist/*') ||request()->is('backsite/*/specialist') ||request()->is('backsite/*/specialist/*') ||request()->is('backsite/consultation') ||request()->is('backsite/consultation/*') ||request()->is('backsite/*/consultation') ||request()->is('backsite/*/consultation/*') ||request()->is('backsite/config-payment') ||request()->is('backsite/config-payment/*') ||request()->is('backsite/*/config-payment') ||request()->is('backsite/*/config-payment/*')? 'bx bx-customize bx-flashing': 'bx bx-customize' }}"></i><span
+                        class="{{ request()->is('backsite/specialist') ||request()->is('backsite/specialist/*') ||request()->is('backsite/*/specialist') ||request()->is('backsite/*/specialist/*') ||request()->is('backsite/consultation') ||request()->is('backsite/consultation/*') ||request()->is('backsite/*/consultation') ||request()->is('backsite/*/consultation/*') ||request()->is('backsite/config_payment') ||request()->is('backsite/config_payment/*') ||request()->is('backsite/*/config_payment') ||request()->is('backsite/*/config_payment/*')? 'bx bx-customize bx-flashing': 'bx bx-customize' }}"></i><span
                         class="menu-title" data-i18n="Master Data">Master Data</span></a>
                 <ul class="menu-content">
 
@@ -82,8 +82,8 @@
 
                     {{-- @can('config_payment_access') --}}
                     <li
-                        class="{{ request()->is('backsite/config-payment') ||request()->is('backsite/config-payment/*') ||request()->is('backsite/*/config-payment') ||request()->is('backsite/*/config-payment/*')? 'active': '' }} ">
-                        <a class="menu-item" href="{{ route('backsite.config-payment.index') }}">
+                        class="{{ request()->is('backsite/config_payment') ||request()->is('backsite/config_payment/*') ||request()->is('backsite/*/config_payment') ||request()->is('backsite/*/config_payment/*')? 'active': '' }} ">
+                        <a class="menu-item" href="{{ route('backsite.config_payment.index') }}">
                             <i></i><span>Config Payment</span>
                         </a>
                     </li>

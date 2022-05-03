@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Frontsite;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 // use library here
 use Illuminate\Support\Facades\Storage;
@@ -15,13 +15,19 @@ use Auth;
 
 // use model here
 use App\Models\User;
-use App\Models\Operational\Doctor;
-use App\Models\MasterData\Specialist;
 
-// thirdparty package
-
-class LandingController extends Controller
+class RegisterController extends Controller
 {
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -29,10 +35,7 @@ class LandingController extends Controller
      */
     public function index()
     {
-        $specialist = Specialist::orderBy('name', 'desc')->limit(5)->get();
-        $doctor = Doctor::orderBy('created_at', 'desc')->limit(4)->get();
-
-        return view('pages.frontsite.landing-page.index', compact('doctor', 'specialist'));
+        return view('pages.frontsite.success.register-success');
     }
 
     /**
@@ -100,6 +103,4 @@ class LandingController extends Controller
     {
         return abort(404);
     }
-
-    // custom function here
 }
